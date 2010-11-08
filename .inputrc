@@ -1,0 +1,7 @@
+# Hit tab once to see list of possible files
+set show-all-if-ambiguous on
+
+# ls -F of tab completion
+set visible-stats on
+
+
