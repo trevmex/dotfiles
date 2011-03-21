@@ -1,6 +1,4 @@
-
-<!-- saved from url=(0073)https://github.com/trevmex/dotfiles/raw/master/.vim/colors/railscasts.vim -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">" Vim color scheme
+" Vim color scheme
 "
 " Name:         railscasts.vim
 " Maintainer:   Nick Moffitt &lt;nick@zork.net&gt;
@@ -96,4 +94,3 @@ highlight SpellBad                  guifg=#D70000 ctermfg=160 ctermbg=NONE cterm
 highlight SpellRare                 guifg=#D75F87 ctermfg=168 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight SpellCap                  guifg=#D0D0FF ctermfg=189 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 highlight MatchParen                guifg=#FFFFFF ctermfg=15 guibg=#005f5f ctermbg=23
-</pre></body></html>
