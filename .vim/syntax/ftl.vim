@@ -1,23 +1,25 @@
-" Vim syntax file
+
+<!-- saved from url=(0057)http://freemarker.sourceforge.net/download/editor/ftl.vim -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">" Vim syntax file
 " Language: FreeMarker Template Language (FTL)
-" Maintainer: Stephan Müller <stephan@chaquotay.net>
+" Maintainer: Stephan Müller &lt;stephan@chaquotay.net&gt;
 " Last Change: 2008 Oct 22
 
 syn case match
 
 " directives and interpolations
-syn region ftlStartDirective start=+<#+ end=+>+ contains=ftlKeyword, ftlDirective, ftlString, ftlComment
-syn region ftlEndDirective start=+</#+ end=+>+ contains=ftlDirective
+syn region ftlStartDirective start=+&lt;#+ end=+&gt;+ contains=ftlKeyword, ftlDirective, ftlString, ftlComment
+syn region ftlEndDirective start=+&lt;/#+ end=+&gt;+ contains=ftlDirective
 syn region ftlStartDirectiveAlt start=+\[#+ end=+\]+ contains=ftlKeyword, ftlDirective, ftlString, ftlComment
 syn region ftlEndDirectiveAlt start=+\[/#+ end=+\]+ contains=ftlDirective
-syn region ftlStartUserDirective start=+<@+ end=+>+ contains=ftlString, ftlComment
-syn region ftlEndUserDirective start=+</@+ end=+>+
+syn region ftlStartUserDirective start=+&lt;@+ end=+&gt;+ contains=ftlString, ftlComment
+syn region ftlEndUserDirective start=+&lt;/@+ end=+&gt;+
 syn region ftlStartUserDirectiveAlt start=+\[@+ end=+\]+ contains=ftlString, ftlComment
 syn region ftlEndUserDirectiveAlt start=+\[/@+ end=+\]+
 syn region ftlInterpolation start=+${+ end=+}+
 syn region ftlInterpolation2 start=+#{+ end=+}+
 syn region ftlString contained start=+"+ end=+"+
-syn region ftlComment start=+<#--+ end=+-->+
+syn region ftlComment start=+&lt;#--+ end=+--&gt;+
 syn region ftlCommentAlt start=+\[#--+ end=+--\]+
 
 " keywords
@@ -38,24 +40,4 @@ highlight link ftlInterpolation2 Constant
 highlight link ftlString Constant
 highlight link ftlComment Comment
 
-python <<EOF
-def ftl():
-    import vim
-    import re
-    l=vim.current.range
-    comment = re.match("^\s*<#--",l[0]) != None
-    for k in xrange(0,len(l)):
-        i=l[k]
-        if i != "":
-            if comment:
-                x=re.sub("<#--", "", i)
-                x=re.sub("-->","",x)
-                l[k]=x
-            else:
-                x=re.sub("^(\s*)","\\1<#--",i)
-                x=re.sub("$","-->",x)
-                l[k]=x
-EOF
-
-vmap <C-F> :python ftl()<CR>
-
+</pre></body></html>
