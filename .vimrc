@@ -17,13 +17,14 @@ set showmatch                  " match pairing parens, brackets, etc.
 set showmode                   " show the current mode
 set smartindent                " try to predict when to indent
 set tabstop=2                  " insert 2 spaces when pressing the tab key
-set virtualedit=all            " allow the cursor to go anywhere
 set visualbell t_vb=           " turn off the visual bell
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
+
+au BufNewFile,BufRead *.ftl set syn=html "treat FreeMarker as HTML
 
 syntax on                      " turn syntax highlighting on by default
 
