@@ -24,7 +24,8 @@ if has('mouse')
   set mouse=a
 endif
 
-au BufNewFile,BufRead *.ftl set syn=html "treat FreeMarker as HTML
+au BufNewFile,BufRead *.ftl set syn=html " treat FreeMarker as HTML
+au FileType javascript setlocal shiftwidth=4 softtabstop=4 " set default tabs for JavaScript to 4
 
 syntax on                      " turn syntax highlighting on by default
 
