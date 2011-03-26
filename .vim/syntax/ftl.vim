@@ -1,6 +1,4 @@
-
-<!-- saved from url=(0057)http://freemarker.sourceforge.net/download/editor/ftl.vim -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">" Vim syntax file
+" Vim syntax file
 " Language: FreeMarker Template Language (FTL)
 " Maintainer: Stephan Müller &lt;stephan@chaquotay.net&gt;
 " Last Change: 2008 Oct 22
@@ -39,5 +37,3 @@ highlight link ftlInterpolation Constant
 highlight link ftlInterpolation2 Constant
 highlight link ftlString Constant
 highlight link ftlComment Comment
-
-</pre></body></html>
