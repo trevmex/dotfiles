@@ -12,11 +12,11 @@ set nocompatible               " Don't do the bad things vi does
 set nohls                      " turn off annoying match highlighting
 set number                     " add line numbers
 set ruler                      " add a ruler to the bottom of the screen
-set shiftwidth=2               " treat 2 spaces as a tab
+set shiftwidth=4               " treat 2 spaces as a tab
 set showmatch                  " match pairing parens, brackets, etc.
 set showmode                   " show the current mode
 set smartindent                " try to predict when to indent
-set tabstop=2                  " insert 2 spaces when pressing the tab key
+set tabstop=4                  " insert 2 spaces when pressing the tab key
 set visualbell t_vb=           " turn off the visual bell
 
 " In many terminal emulators the mouse works just fine, thus enable it.
@@ -25,7 +25,8 @@ if has('mouse')
 endif
 
 au BufNewFile,BufRead *.ftl set syn=html " treat FreeMarker as HTML
-au FileType javascript setlocal shiftwidth=4 softtabstop=4 " set default tabs for JavaScript to 4
+au FileType ruby setlocal shiftwidth=2 softtabstop=2 " set default tabs for Ruby to 2
+au BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save FTW
 
 syntax on                      " turn syntax highlighting on by default
 
@@ -44,4 +45,4 @@ if has("autocmd")
       \           && expand("%") !~ "git-rebase-todo" |
       \   exe "normal g`\"" |
       \ endif
-endif " has("autocmd") 
+endif " has("autocmd")
