@@ -25,6 +25,7 @@ if has('mouse')
 endif
 
 au BufNewFile,BufRead *.ftl set syn=html " treat FreeMarker as HTML
+au BufNewFile,BufRead *.ru set syn=rackup " add highlighting for rakup files
 au FileType ruby setlocal shiftwidth=2 softtabstop=2 " set default tabs for Ruby to 2
 au BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save FTW
 
