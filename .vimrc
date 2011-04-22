@@ -29,7 +29,7 @@ au BufNewFile,BufRead *.ru set syn=rackup " add highlighting for rakup files
 au FileType ruby setlocal shiftwidth=2 softtabstop=2 " set default tabs for Ruby to 2
 set list listchars=tab:»·,trail:· " set trailing space characters as a dot.
 
-syntax on                      " turn syntax highlighting on by default
+syntax enable                      " turn syntax highlighting on by default
 
 " Show EOL type and last modified timestamp, right after the filename
 set statusline=%<%F%h%m%r\ [%{&ff}]\ (%{strftime(\"%H:%M\ %d/%m/%Y\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
