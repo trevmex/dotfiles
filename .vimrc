@@ -4,6 +4,7 @@ set autoindent                 " keep the indentation of the previous line
 set autoread                   " reload if it has been edited outside of vim
 set background=dark            " I prefer dark backgrounds
 set backspace=indent,eol,start " make backspace key work the way it should
+set cursorline                 " Add a crsor line
 set expandtab                  " convert all tabs to spaces on save
 set history=700                " remember a lot of commands
 set incsearch                  " jump to the first result while searching
@@ -30,6 +31,7 @@ au FileType ruby setlocal shiftwidth=2 softtabstop=2 " set default tabs for Ruby
 set list listchars=tab:»·,trail:· " set trailing space characters as a dot.
 
 syntax enable                      " turn syntax highlighting on by default
+colorscheme solarized              " set the colorscheme
 
 " Show EOL type and last modified timestamp, right after the filename
 set statusline=%<%F%h%m%r\ [%{&ff}]\ (%{strftime(\"%H:%M\ %d/%m/%Y\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
