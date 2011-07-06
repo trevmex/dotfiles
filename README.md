@@ -1,16 +1,16 @@
-= Trevor's dotfiles
-These are my personal bash/vi settings. Fee free to use them.
+# Trevor's dotfiles
+These are my personal bash/vim settings. Fee free to use them.
 
-== Installation
+## Installation
 Add these files to your home directory.
 
 If you are using Windows, change the following files:
 
-move .vimrc _vimrc
-move .gvimrc _gvimrc
-move .vim vimfiles
+    move .vimrc _vimrc
+    move .gvimrc _gvimrc
+    move .vim vimfiles
 
-== License
+## License
 Copyright 2011 Trevor Lalish-Menagh
 
 Licensed under the Apache License, Version 2.0 (the "License");

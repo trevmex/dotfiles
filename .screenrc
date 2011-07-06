@@ -1,0 +1,60 @@
+#----------
+# jumex's .screenrc config file
+
+# Make the bell visible instead of audible
+vbell on
+vbell_msg "Ding"
+vbellwait 0
+
+# Shut off the startup message
+startup_message off
+
+# Set the default scrollback to 1000
+defscrollback 1000
+
+################
+#
+# Encoding
+#
+
+# Set default encoding to UTF-8
+encoding UTF-8
+defencoding UTF-8
+defutf8 on
+
+################
+#
+# Keybindings
+#
+
+# Remove some stupid / dangerous key bindings
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+# Make them better
+bind 'K' kill
+#bind 'I' login on
+#bind 'O' login off
+bind '}' history
+
+################
+#
+# Default Windows
+#
+
+screen -t shell 0 bash
+#screen -t xtv 1 bash up_and_run_fancast
+#screen -t pds 2 bash up_and_run_portalds
+#screen -t cimspire 3 bash up_and_test_cimspire
+
+# NOTE: I go straight to screen when I log in by adding the
+# following to the end of my .profile:
+# screen; exit
+# But to make this not effect newly created shell screens
+# (i.e. ^a^c) I have a .bashrc file that is the same as my
+# .bash_profile file, but without that last line.
+#----------
