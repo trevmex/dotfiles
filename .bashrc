@@ -64,9 +64,16 @@ function parse_git_branch {
   echo " ("${ref#refs/heads/}$(parse_git_dirty)")"
 }
 
+function parse_svn_repo {
+  info=$(svn info 2> /dev/null) || return
+  root=$(echo $info | sed -e 's/^.*Repository Root: //g' -e 's,.*/,,g' -e 's/ .*//g')
+  revision=$(echo $info | sed -e 's/^.*Revision: //g' -e 's/ .*//g')
+  echo " ($root:$revision)"
+}
+
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 NORMAL="\[\033[0m\]"
 
-export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)$NORMAL\$ " # Add the git branch to the prompt
+export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)\$(parse_svn_repo)$NORMAL\$ " # Add the git branch to the prompt
