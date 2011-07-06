@@ -8,3 +8,8 @@
     df = diff
     lg = log -p
     who = shortlog -s --
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto

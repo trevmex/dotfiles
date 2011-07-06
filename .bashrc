@@ -55,4 +55,18 @@ function up_and_run {
     screen -t pds 2 bash -c "cd portalds-trunk && svn up && ./runserver.sh"
 }
 
-export PS1='\u@\h:\W$ ' # Add the git branch to the prompt
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo " ("${ref#refs/heads/}$(parse_git_dirty)")"
+}
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+NORMAL="\[\033[0m\]"
+
+export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)$NORMAL\$ " # Add the git branch to the prompt
