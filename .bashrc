@@ -1,3 +1,5 @@
+set -o vi # set vi keybingings
+
 export NODE_PATH=$HOME/local/node
 
 # Colorize the Terminal
