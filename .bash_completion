@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+for i in $HOME/.bash_completion_scripts/*; do
+    if [ -f "$i" ]; then
+        . "$i"
+    fi
+done
