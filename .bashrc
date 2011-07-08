@@ -35,7 +35,11 @@ alias count_cukes='grep -R "^[^#]*Scenario" * | grep -v "svn-base" | wc -l'
 # changing directory to code project
 function c { cd ~/Code/$1; }
 if [ -f /usr/local/Cellar/bash-completion/1.3/etc/bash_completion ]; then
-  . /usr/local/Cellar/bash-completion/1.3/etc/bash_completion # Add bash completion (http://www.caliban.org/bash/#completion)
+    . /usr/local/Cellar/bash-completion/1.3/etc/bash_completion # Add bash completion (http://www.caliban.org/bash/#completion)
+fi
+
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+    . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
 function up_and_test_fancast {
