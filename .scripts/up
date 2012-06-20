@@ -28,7 +28,7 @@ set -o errexit nounset
 ENV="/usr/bin/env"
 
 if [ -d "$(pwd)/.git" ]; then
-    ${ENV} git pull --rebase
+    ${ENV} git pull --rebase origin master
 elif [ -d "$(pwd)/.svn" ]; then
     ${ENV} svn update
 else
