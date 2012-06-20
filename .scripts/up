@@ -23,19 +23,14 @@
 # SOFTWARE.
 #
 
-NULL="/dev/null"
-ENV="/usr/bin/env"
-GIT="${ENV} git"
-NOT_A_GIT_REPO="128" # a 128 error occurs when git is run not in a git repo.
-SVN="${ENV} svn"
-NOT_AN_SVN_REPO="Skipped '.'" # When svn update is run not in an svn repo.
+set -o errexit nounset
 
-${GIT} pull --rebase 2> ${NULL}; GIT_ERROR_CODE=$?
-if [ "${GIT_ERROR_CODE}" == "${NOT_A_GIT_REPO}" ]; then
-    SVN_RESULT="$(${SVN} update 2> ${NULL})"
-    if [ "${SVN_RESULT}" == "${NOT_AN_SVN_REPO}" ]; then
-        echo "Update failed. Are you in a git or svn repo?"
-    else
-        echo "${SVN_RESULT}"
-    fi
+ENV="/usr/bin/env"
+
+if [ -d "$(pwd)/.git" ]; then
+    ${ENV} git pull --rebase
+elif [ -d "$(pwd)/.svn" ]; then
+    ${ENV} svn update
+else
+    echo "Update failed. Are you in a git or svn repo?"
 fi
