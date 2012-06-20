@@ -22,6 +22,7 @@ shopt -s extglob # Extend pattern matching in bash to use regexp (?*+@!)
 #
 
 alias l="ls -AlF"
+alias up="~/.scripts/up" # Typing 'up' will update your svn OR git repo, if you are in one
 
 #
 # Bash Completion
