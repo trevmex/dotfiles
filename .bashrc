@@ -52,7 +52,10 @@ function parse_git_dirty {
 }
 
 function parse_git_branch {
-  branch=$(git branch|grep "*"|sed -e s/^..//g 2> /dev/null) || return
+  branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
+  if [[ -z ${branch} ]]; then
+    return
+  fi
   echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)")"
 }
 
