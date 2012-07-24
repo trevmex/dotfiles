@@ -47,6 +47,10 @@ function parse_git_in_rebase {
   [[ -d .git/rebase-apply ]] && echo " REBASING"
 }
 
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
 function parse_git_branch {
   branch=$(git branch|grep "*"|sed -e s/^..//g 2> /dev/null) || return
   echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)")"
