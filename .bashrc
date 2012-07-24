@@ -43,13 +43,13 @@ NORMAL="\[\033[0m\]"
 #
 # Prompt Setup
 #
-function parse_git_dirty() { # Mark git info with '*' if dirty
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+function parse_git_in_rebase {
+  [[ -d .git/rebase-apply ]] && echo " REBASING"
 }
 
-function parse_git_branch() { # Display git info
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo " ("${ref#refs/heads/}$(parse_git_dirty)")"
+function parse_git_branch {
+  branch=$(git branch|grep "*"|sed -e s/^..//g 2> /dev/null) || return
+  echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)")"
 }
 
 function parse_svn_repo() { # Display svn info
