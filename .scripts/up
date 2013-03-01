@@ -28,9 +28,10 @@ set -o errexit nounset
 ENV="/usr/bin/env"
 
 if [ -d "$(pwd)/.git" ]; then
-    ${ENV} git pull --rebase origin master
+    ${ENV} git fetch >/dev/null
+    ${ENV} git rebase origin/master >/dev/null
 elif [ -d "$(pwd)/.svn" ]; then
-    ${ENV} svn update
+    ${ENV} svn update >/dev/null
 else
-    echo "Update failed. Are you in a git or svn repo?"
+    echo "Update failed. Are you in a git or svn repo?" >&2
 fi
