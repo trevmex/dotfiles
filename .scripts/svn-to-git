@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 2 ]; then
-  echo "Usage: $0 <repository name> <local dir>"
+if [ $# -ne 3 ]; then
+  echo "Usage: $0 <repository name> <local dir> <remote repo server"
   exit 1
 fi
 
@@ -33,7 +33,7 @@ echo "Branch list:"
 git branch
 
 echo "Adding remote"
-git remote add origin "ssh://tmenagh@source.dev.cim.comcast.net:8766/$2"
+git remote add origin "$3/$2"
 cp ../sirius/.git/hooks/commit-msg ./.git/hooks/
 
 echo "Sending to server"
@@ -46,5 +46,3 @@ echo git remote rm origin
 echo "git remote add origin /srv/git/$2.git"
 echo git push origin --all
 echo git push origin --tag
-
-ssh gerrit
