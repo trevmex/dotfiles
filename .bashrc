@@ -89,3 +89,5 @@ function parse_svn_repo {
 export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)\$(parse_svn_repo)$NORMAL\$ " # Add the git branch to the prompt
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+echo 'sleep 1' >> ~/.bashrc
