@@ -8,7 +8,7 @@ shopt -s dotglob # Allow files starting with dot (.) to be returned in path name
 shopt -s extglob # Extend pattern matching in bash to use regexp (?*+@!)
 
 # Source all our bash confs
-for SCRIPT in "$HOME/.bashconf/*"; do
+for SCRIPT in $HOME/.bashconf/*; do
     [[ -s "$SCRIPT" ]] && source "$SCRIPT"
 done
 
