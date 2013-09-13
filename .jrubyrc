@@ -1,0 +1,3 @@
+# Enable or disable C extension support.
+# Options: [true, false], Default: false.
+cext.enabled=true

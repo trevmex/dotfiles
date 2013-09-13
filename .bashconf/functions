@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+ENV="/usr/bin/env"
+
+function up() {
+    if [ -d "$(pwd)/.git" ]; then
+        ${ENV} git fetch >/dev/null
+        ${ENV} git rebase origin/master >/dev/null
+    elif [ -d "$(pwd)/.svn" ]; then
+        ${ENV} svn update >/dev/null
+    else
+        echo "Update failed. Are you in a git or svn repo?" >&2
+    fi
+}
+
+function gcb() {
+    git checkout -b "${1}"
+}
+
+function psf() {
+    ps auxwww | grep ${1} | grep -v "grep ${1}"
+}
+
+function gw() {
+    echo "Wipe out local uncommited changes? (return to accept, ctrl-c to cancel)"
+    read
+    git checkout -- .
+}
+
+function upc() {
+    c=`pwd`
+    cd $HOME/Code && upa && git gc
+    cd $c
+}
+
+function gc() {
+    git clone $1
+}
+
+function eclipseup() {
+    mvn eclipse:eclipse
+}
+
+function eclipseupa() {
+    for l in *
+    do
+        if [[ -d $l ]]
+        then
+            cd $l
+            if [[ -e pom.xml ]]
+            then
+                eclipseup
+            fi
+            cd ..
+        fi
+    done
+}
+
+function ideaupa() {
+    for l in *
+    do
+        if [[ -d $l ]]
+        then
+            cd $l
+            if [[ -e pom.xml ]]
+            then
+                mvn idea:clean idea:idea
+            fi
+            cd ..
+        fi
+    done
+}
+
+function upa() {
+    for l in *
+    do
+        if [ -d "$l" ]; then
+            echo "Updating $l"
+            cd "$l" >/dev/null
+            up >/dev/null
+            cd ..
+        fi
+    done
+}
+
+function man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+NORMAL="\[\033[0m\]"
+
+function parse_git_in_rebase {
+  [[ -d .git/rebase-apply ]] && echo " REBASING"
+}
+
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
+function parse_git_branch {
+  branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
+  if [[ -z ${branch} ]]; then
+    return
+  fi
+  echo " ("${branch}$(parse_git_dirty)$(parse_git_in_rebase)")"
+}
+
+function parse_svn_repo {
+  info=$(svn info 2> /dev/null) || return
+  root=$(echo $info | sed -e 's/^.*Repository Root: //g' -e 's,.*/,,g' -e 's/ .*//g')
+  revision=$(echo $info | sed -e 's/^.*Revision: //g' -e 's/ .*//g')
+  echo " ($root:$revision)"
+}
+
+export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)\$(parse_svn_repo)$NORMAL\$ " # Add the git branch to the prompt

@@ -4,9 +4,9 @@ These are my personal bash/vim settings. Fee free to use them.
 
 ## Prerequisites
 
-You will need to install Homebrew first:
+You will need to install Homebrew first (if you are on Mac OS X):
 
-    /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 To get advanced bash tab completion:
 
@@ -16,6 +16,8 @@ There are some other tools you might want as well:
 
     brew install ack  # this is an alternative to grep that is very awesome
     brew install tmux # this is an alternative to screen that is very awesome
+    \curl -L https://get.rvm.io | bash -s stable # RVM allows you to install multiple Ruby interpreters
+    gem install pry # pry is a GREAT alternative to irb for Ruby development
 
 ## Installation
 
@@ -29,7 +31,7 @@ If you are using Windows, change the following files:
 
 ## License
 
-Copyright 2011-2012 Trevor Lalish-Menagh
+Copyright 2011-2013 Trevor Lalish-Menagh
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

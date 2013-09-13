@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+alias l="ls -AlF"
+alias srvlocal="CIM_ENV=local mvn -Dmaven.tomcat.port=9555 tomcat:run"
+alias mci="mvn clean install"
+alias gs="git status"
+alias ga="git add . && git add -u && gs"
+alias gam="git ci --amend"
+alias gpom="git push origin master"
+alias gpushanddeploy="git push origin master && git push heroku master"
+alias gphm="git push heroku master"
+alias gptg="git push origin HEAD:refs/for/master"
+alias gcm="git checkout master"
+alias gci="git commit"
+alias gl="git log"
+alias gd="git diff"
+alias gi="git remote show origin"
+alias gb="git branch -a"
+alias ggc="for l in ~/Code/*; do if [[ -d $l/.git ]]; then cd $l && git gc; cd ~/Code;fi; done"
+alias cn="cd $HOME/Code/nozomi"
+alias tgo='$TOMCAT/startup.sh -DCIM_ENV=local'
+alias tstop='$TOMCAT/shutdown.sh'
+alias b='mvn -DCIM_ENV=local clean package war:inplace'
+alias ec='mvn eclipse:clean eclipse:eclipse'
+alias rt='rm -rf target'
+alias kickall="tstop&&cs&&rt&&ec&&mci&&cw&&rt&&ec&&b&&ca&&rt&&ec&&b&&cwi&&rt&&ec&&b&&tgo"
+alias kt="tstop&&rt&&ec&&b&&tgo"
+alias t="bundle && bundle exec rake"
+alias adda="vim $HOME/.bashconf/aliases && source $HOME/.bashconf/aliases"
+alias addf="vim $HOME/.bashconf/functions && source $HOME/.bashconf/functions"
+alias adde="vim $HOME/.bashconf/exports && source $HOME/.bashconf/exports"

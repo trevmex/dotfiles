@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Colorize the Terminal
+export CLICOLOR=1;
+
+export GREP_OPTIONS='--color=auto' # Add color to grep
+
+export HISTIGNORE="&:ls:l:[bf]g:exit" # Ignore certain non-important commands in the history
+
+export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M"
+
+export JAVA_OPTS="-Xms1256m -Xmx1512m -XX:MaxPermSize=256m"
+
+export JRUBY_OPTS="-J-Dfile.encoding=utf8"
+
+export MAVEN_OPTS="-Xmx2024m -XX:MaxPermSize=512m"
