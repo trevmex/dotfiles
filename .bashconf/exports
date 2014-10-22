@@ -14,3 +14,13 @@ export JAVA_OPTS="-Xms1256m -Xmx1512m -XX:MaxPermSize=256m"
 export JRUBY_OPTS="-J-Dfile.encoding=utf8"
 
 export MAVEN_OPTS="-Xmx2024m -XX:MaxPermSize=512m"
+
+export SCALA_HOME=$HOME/Applications/scala
+
+export CLASSPATH=".:/usr/local/Cellar/antlr/4.4/antlr-4.4-complete.jar:$CLASSPATH"
+
+export GLASSFISH_HOME=/usr/local/opt/glassfish/libexec
+
+export PATH=${PATH}:${GLASSFISH_HOME}/bin
+
+export PATH=$HOME/bin:$SCALA_HOME/bin:$M2_HOME/bin:/usr/local/mysql/bin:$HOME/.rvm/bin:$PATH

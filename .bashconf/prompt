@@ -10,7 +10,7 @@ function parse_git_in_rebase {
 }
 
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
 
 function parse_git_branch {
@@ -28,4 +28,8 @@ function parse_svn_repo {
   echo " ($root:$revision)"
 }
 
-export PS1="$RED\u@\h:$GREEN\W$YELLOW\$(parse_git_branch)\$(parse_svn_repo)$NORMAL\$ " # Add the git branch to the prompt
+function grandparent_dir {
+  pwd | sed -e "s,.*/\(.*/\),\1,g"
+}
+
+export PS1="$RED\u@\h:$GREEN\$(grandparent_dir)$YELLOW\$(parse_git_branch)\$(parse_svn_repo)$NORMAL\$ " # Add the git branch to the prompt

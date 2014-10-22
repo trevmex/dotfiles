@@ -14,7 +14,7 @@ To get advanced bash tab completion:
 
 There are some other tools you might want as well:
 
-    brew install ack  # this is an alternative to grep that is very awesome
+    brew install ag  # this is an alternative to grep that is very awesome
     brew install tmux # this is an alternative to screen that is very awesome
     \curl -L https://get.rvm.io | bash -s stable # RVM allows you to install multiple Ruby interpreters
     gem install pry # pry is a GREAT alternative to irb for Ruby development
@@ -31,7 +31,7 @@ If you are using Windows, change the following files:
 
 ## License
 
-Copyright 2011-2013 Trevor Lalish-Menagh
+Copyright 2011-2014 Trevor Lalish-Menagh
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -2,6 +2,27 @@
 
 ENV="/usr/bin/env"
 
+function syncp4() {
+    for dir in $(${ENV} cat ${HOME}/.p4projects); do
+        ${ENV} p4 sync $@ ${dir}
+    done
+}
+
+function setjdk() {
+    if [ $# -ne 0 ]; then
+        removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
+        if [ -n "${JAVA_HOME+x}" ]; then
+            removeFromPath $JAVA_HOME
+        fi
+        export JAVA_HOME=`/usr/libexec/java_home -v $@`
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
+}
+
+function removeFromPath() {
+    export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
+}
+
 function up() {
     if [ -d "$(pwd)/.git" ]; then
         ${ENV} git fetch >/dev/null
